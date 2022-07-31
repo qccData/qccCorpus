@@ -140,7 +140,7 @@ model.summary()
 
 
 earlystop = EarlyStopping(monitor='val_loss', mode='min', patience=10,restore_best_weights=True)
-hist = model.fit(x_train, y_train.T.tolist(), batch_size=34, 
+hist = model.fit(x_train, y_train.T.tolist(), batch_size=32, 
                   validation_data=(x_val, y_val.T.tolist()), epochs=180, verbose=1, shuffle=True,
                   callbacks=[earlystop])
 metrik = model.evaluate(x_test, y_test.T.tolist())
@@ -148,7 +148,7 @@ metrik = model.evaluate(x_test, y_test.T.tolist())
 print(metrik)
 
 
-predict = model.predict(x_test, batch_size=34)
+predict = model.predict(x_test, batch_size=32)
 list_=[]
 for i in range(2484):
     list_.append([predict[0][i],predict[1][i],predict[2][i]])
