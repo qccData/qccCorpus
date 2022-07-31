@@ -64,7 +64,7 @@ def load():
 
 x_test, x_train, x_val, y_test, y_train, y_val = load()
 
-# for LSTM input shape (batch, steps, features/channel)
+
 x_train = x_train.reshape(x_train.shape[0], 1, x_train.shape[1])
 x_test = x_test.reshape(x_test.shape[0], 1, x_test.shape[1])
 x_val = x_val.reshape(x_val.shape[0], 1, x_val.shape[1])
