@@ -3,6 +3,9 @@
 # (by Bagus Tris Atmaja, Masato Akagi)                    #
 ###########################################################
 
+
+#%tensorflow_version 1.x 
+
 import numpy as np
 import pickle
 import pandas as pd
@@ -108,13 +111,13 @@ def ccc_loss(gold, pred):
 # API model, if use RNN, first two rnn layer must return_sequences=True
 def api_model(alpha, beta, gamma):
     # speech network
-    input_speech = Input(shape=(feat.shape[1], feat.shape[2]), name='speech_input')
+    input_speech = Input(shape=(x_train.shape[1], x_train.shape[2]), name='speech_input')
     net_speech = BatchNormalization()(input_speech)
-    net_speech = Convolution1D(256, 3, activation='relu')(net_speech)
-    net_speech = Convolution1D(128, 12, activation='relu')(net_speech)
-    net_speech = Convolution1D(64, 12, activation='relu')(net_speech)
-    net_speech = Convolution1D(32, 12, activation='relu')(net_speech)
-    net_speech = Convolution1D(16, 12, activation='relu')(net_speech)
+    net_speech = Convolution1D(256, 1, activation='relu')(net_speech)
+    net_speech = Convolution1D(128, 1, activation='relu')(net_speech)
+    net_speech = Convolution1D(64, 1, activation='relu')(net_speech)
+    net_speech = Convolution1D(32, 1, activation='relu')(net_speech)
+    net_speech = Convolution1D(16, 1, activation='relu')(net_speech)
     model_speech = Flatten()(net_speech)
     #model_speech = Dropout(0.1, seed=None)(net_speech)
 
@@ -147,9 +150,9 @@ print(metrik)
 
 predict = model.predict(x_test, batch_size=34)
 list_=[]
-for i in range(2400):
+for i in range(2484):
     list_.append([predict[0][i],predict[1][i],predict[2][i]])
 list_=np.array(list_)
-list_=list_.reshape(2400,3)
-v = getCCC(y_test, list_)
+list_=list_.reshape(2484,3)
+v = CCC(y_test, list_)
 print(v)
