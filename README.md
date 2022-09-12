@@ -8,8 +8,4 @@ Repository for the Quechua Collao corpus baselines for automatic dimensional emo
 -   Convolutional Neural Network (CNN)
 -   Long short-term Memory (LSTM)
 
-Run each file to reproduce results. Note that Tensorflow 1 is needed to run MLP, CNN, and LSTM. It can be used easily in Colab by adding:
-
-        %tensorflow_version 1.x 
-
-at the beginning of the notebook.
+Run each file to reproduce results. Note that Tensorflow 1 is needed to run MLP, CNN, and LSTM. 
